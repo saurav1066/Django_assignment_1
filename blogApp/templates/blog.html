@@ -1,0 +1,12 @@
+{%extends 'index.html'%}
+{%block content%}
+    <h1> Welcome To our Blog </h1>
+        {% for i in object%}
+        <div id = 'blog_page'>
+            <h2>{{i.title}}</h2>
+            <h3>{{i.body}}</h3>
+            <p>Author: {{i.author.name}}</p>
+            <p>Last_updated at: {{i.date_posted}}</p>
+        </div>
+{%endfor%}
+{%endblock%}
