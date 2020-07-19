@@ -7,13 +7,9 @@
         body,html{
             width: auto;
 	        height: 100%;
-<!--	        background: rgb(2,0,36);-->
-<!--            background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(33,33,154,1) 0%, rgba(11,154,222,1) 0%, rgba(11,155,222,1)-->
-<!--            9%, rgba(9,165,228,1) 48%, rgba(0,212,255,1) 80%);-->
             background: #283c86;
             background: -webkit-linear-gradient(to right, #45a247, #283c86);
             background: linear-gradient(to right, #45a247, #283c86);
-
         }
 
         body,p {
@@ -34,6 +30,63 @@
         h1 {
 	        color: white;
 	        font: 700 2.5rem/3rem "Montserrat", sans-serif;
+
+        }
+        .heading{
+            animation: glitch 1s linear infinite;
+        }
+        @keyframes glitch{
+          2%,64%{
+            transform: translate(2px,0) skew(0deg);
+          }
+          4%,60%{
+            transform: translate(-2px,0) skew(0deg);
+          }
+          62%{
+            transform: translate(0,0) skew(5deg);
+          }
+        }
+        .heading:before,
+        .heading:after{
+          content: attr(title);
+          position: absolute;
+          left: 0;
+        }
+
+        .heading:before{
+          animation: glitchTop 1s linear infinite;
+          clip-path: polygon(0 0, 100% 0, 100% 33%, 0 33%);
+          -webkit-clip-path: polygon(0 0, 100% 0, 100% 33%, 0 33%);
+        }
+
+        @keyframes glitchTop{
+          2%,64%{
+            transform: translate(2px,-2px);
+          }
+          4%,60%{
+            transform: translate(-2px,2px);
+          }
+          62%{
+            transform: translate(13px,-1px) skew(-13deg);
+          }
+        }
+
+        .heading:after{
+          animation: glitchBotom 1.5s linear infinite;
+          clip-path: polygon(0 67%, 100% 67%, 100% 100%, 0 100%);
+          -webkit-clip-path: polygon(0 67%, 100% 67%, 100% 100%, 0 100%);
+        }
+
+        @keyframes glitchBotom{
+          2%,64%{
+            transform: translate(-2px,0);
+          }
+          4%,60%{
+            transform: translate(-2px,0);
+          }
+          62%{
+            transform: translate(-22px,5px) skew(21deg);
+          }
         }
 
         h2{
@@ -41,14 +94,19 @@
         }
 
         button{
-            display: inline-block;
-            width: auto;
-            padding: 10px;
-            border: 2px solid #14bf98;
-            border-radius: 3px;
+         	display: inline-block;
+            padding: 1.1875rem 1.875rem 1.1875rem 1.875rem;
+            border: 0.125rem solid #14bf98;
+            border-radius: 0.25rem;
             background-color: #14bf98;
             color: #fff;
-            font: sans-serif;
+            font: 700 0.75rem/0 "Montserrat", sans-serif;
+            text-decoration: none;
+            transition: all 0.2s;
+        }
+        button:hover {
+            background-color: transparent;
+            color: #14bf98;
             text-decoration: none;
         }
 
@@ -72,12 +130,14 @@
         }
 
 
+
     </style>
 </head>
 <body>
     {%block content%}
     <div id = "index_page">
-        <h1>Welcome to the Blog</h1>
+        <h1 class = "heading" title="Welcome to the Blog">Welcome to the Blog</h1>
+
         <button>
             <a class="btn btn-primary" href="/blogs">See Blog</a>
         </button>
